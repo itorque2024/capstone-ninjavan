@@ -6,7 +6,7 @@ import datetime
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from typing import List, Optional
 import numpy as np
 import pandas as pd
@@ -58,6 +58,13 @@ class RouteRequest(BaseModel):
 class ChatRequest(BaseModel):
     message: str
     global_demand_volume: int
+
+    @field_validator("message")
+    @classmethod
+    def cap_message_length(cls, v: str) -> str:
+        if len(v) > 2000:
+            raise ValueError("Message too long (max 2000 characters)")
+        return v
 
 class FraudRequest(BaseModel):
     threshold: float

@@ -10,12 +10,30 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
 
-  # Block Google/Gemini API keys (AIza pattern) in tracked files
+  # Block API keys from being committed
   - repo: local
     hooks:
       - id: block-gemini-key
         name: Block Gemini API key
         language: pygrep
         entry: "AIza[0-9A-Za-z_\\-]{35}"
+        types_or: [python, jupyter, text, yaml]
+        exclude: "^\\.env(\\.example)?$"
+      - id: block-groq-key
+        name: Block Groq API key
+        language: pygrep
+        entry: "gsk_[0-9A-Za-z]{52}"
+        types_or: [python, jupyter, text, yaml]
+        exclude: "^\\.env(\\.example)?$"
+      - id: block-langsmith-key
+        name: Block LangSmith API key
+        language: pygrep
+        entry: "lsv2_pt_[0-9a-f]{32}"
+        types_or: [python, jupyter, text, yaml]
+        exclude: "^\\.env(\\.example)?$"
+      - id: block-hf-token
+        name: Block Hugging Face token
+        language: pygrep
+        entry: "hf_[0-9A-Za-z]{37}"
         types_or: [python, jupyter, text, yaml]
         exclude: "^\\.env(\\.example)?$"

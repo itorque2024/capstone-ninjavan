@@ -272,6 +272,14 @@ _DECOMPOSER_SYSTEM = """You are a query decomposer for a NinjaVan customer servi
 Split the customer message into individual questions. For each, assign the best intent.
 Valid intents: tracking, delivery, claims, policy, ops, escalation
 
+Intent guidance:
+- tracking   : "where is my parcel", "what is my parcel status", "track my order NV-XXXXXX"
+- delivery   : "when will it arrive", "why is it delayed", "estimated delivery time", "reschedule delivery", "failed delivery"
+- claims     : "damaged parcel", "lost parcel", "file a claim", "compensation"
+- policy     : "what are the rules", "prohibited items", "terms and conditions", "refund policy"
+- ops        : "operations", "hub status", "service disruption", "peak period"
+- escalation : "frustrated", "urgent complaint", "speak to manager", "this is unacceptable"
+
 Rules:
 - If there is only one question, return a single-element array.
 - Never return more than 5 elements.
@@ -355,7 +363,9 @@ def synthesizer_node(state: ChatState) -> ChatState:
     all_sources = [sa.get("source", "") for sa in sub_answers]
     llm_label   = "groq" if any("groq" in s for s in all_sources) else "gemini"
 
-    if len(sub_answers) == 1:
+    # Deduplicate: if all answers are identical collapse to one
+    unique_answers = list(dict.fromkeys(sa["answer"] for sa in sub_answers))
+    if len(sub_answers) == 1 or len(unique_answers) == 1:
         return {**state,
                 "answer":          primary["answer"],
                 "intent":          primary_intent,
