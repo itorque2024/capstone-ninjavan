@@ -1,0 +1,3 @@
+Topic: NinjaVan Account and Login
+
+To track parcels you do not need a NinjaVan account — go to ninjavan.co/en-sg/tracking and enter your tracking number. Sellers and businesses can register for a merchant account at dashboard.ninjavan.co (free to sign up). For account login issues, use the Forgot Password link on the dashboard login page or email shippercare_sg@ninjavan.co. NinjaVan will never ask for your password, banking PIN, or OTP via email or chat. For consumer-to-consumer (C2C) deliveries with no account needed, use https://delivery.ninjavan.co/c2c.

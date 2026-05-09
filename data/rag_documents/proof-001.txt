@@ -1,0 +1,3 @@
+Topic: Proof of Delivery
+
+NinjaVan captures proof of delivery (POD) for every parcel — either a recipient signature or a photo of the parcel at the delivery location. POD is accessible via ninjavan.co/en-sg/tracking within 24 hours of delivery using your tracking number. POD records are retained for 90 days. If you dispute a delivery (e.g., you did not receive the parcel but tracking shows Delivered), NinjaVan will share the POD photo as part of the investigation — contact shippercare_sg@ninjavan.co with your tracking number. Merchants can bulk-download POD records from dashboard.ninjavan.co.

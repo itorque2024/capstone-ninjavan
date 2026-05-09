@@ -1,0 +1,21 @@
+parcel_id,order_date,product_description,weight_kg,sender_name,origin,recipient_name,destination,status,estimated_delivery,last_update,rider_name
+NV-100123,2026-04-18,Wireless Bluetooth Earphones,0.3,TechMart SG,Singapore,Ahmad Bin Yusof,Kuala Lumpur,Delivered,2026-04-22,2026-04-22 14:32,Rajan Kumar
+NV-100124,2026-04-19,Women's Running Shoes (Size 7),1.2,SportZone Online,Singapore,Priya Nair,Singapore,Delivered,2026-04-23,2026-04-23 11:05,Tan Wei Liang
+NV-100125,2026-04-20,Laptop Stand Aluminium,0.8,ErgoHub,Singapore,Kevin Lim,Singapore,Out for Delivery,2026-04-27,2026-04-27 09:15,Budi Santoso
+NV-100126,2026-04-20,Organic Green Tea (500g),0.6,TeaHouse KL,Kuala Lumpur,Siti Rahimah,Johor Bahru,In Transit,2026-04-28,2026-04-26 22:40,Hafiz Rahman
+NV-100127,2026-04-21,Gaming Mouse RGB,0.4,GameZone MY,Kuala Lumpur,Daniel Wong,Penang,In Transit,2026-04-29,2026-04-27 06:10,Mohamad Faizal
+NV-100128,2026-04-21,Baby Romper Set (3-6m),0.5,TinyTots Store,Singapore,Nurul Ain,Singapore,Failed Delivery - Attempted,2026-04-25,2026-04-25 16:20,Tan Wei Liang
+NV-100129,2026-04-22,Stainless Steel Water Bottle,0.7,EcoLiving,Singapore,Jason Teo,Singapore,Delivered,2026-04-26,2026-04-26 13:45,Rajan Kumar
+NV-100130,2026-04-22,Vitamin C Supplements 60ct,0.3,HealthPlus SG,Singapore,Fatimah Zahra,Singapore,Delivered,2026-04-26,2026-04-26 15:10,Budi Santoso
+NV-100131,2026-04-23,Portable Charger 20000mAh,0.5,PowerBank Direct,Singapore,Lena Tan,Johor Bahru,In Transit,2026-04-29,2026-04-27 04:55,Hafiz Rahman
+NV-100132,2026-04-23,Men's Slim Fit Jeans,0.8,FashionMall SG,Singapore,Raymond Koh,Singapore,Out for Delivery,2026-04-27,2026-04-27 08:30,Mohamad Faizal
+NV-100133,2026-04-24,Mechanical Keyboard TKL,1.1,KeyboardKings,Kuala Lumpur,Sarah Lee,Kuala Lumpur,Pending Pickup,2026-04-30,2026-04-24 10:00,—
+NV-100134,2026-04-24,Air Fryer 3.5L,3.2,HomeKitchen MY,Kuala Lumpur,Azlan Ismail,Ipoh,In Transit,2026-04-30,2026-04-26 18:25,Rajan Kumar
+NV-100135,2026-04-24,Skincare Gift Set,0.6,GlowBeauty,Singapore,Michelle Ong,Singapore,Delivered,2026-04-27,2026-04-27 10:55,Tan Wei Liang
+NV-100136,2026-04-25,USB-C Hub 7-in-1,0.2,TechHub SG,Singapore,Marcus Chan,Singapore,Out for Delivery,2026-04-27,2026-04-27 09:45,Budi Santoso
+NV-100137,2026-04-25,Children's Puzzle 1000pcs,0.9,ToyWorld SG,Singapore,Grace Ng,Singapore,Pending Pickup,2026-04-28,2026-04-25 12:00,—
+NV-100138,2026-04-25,Coffee Grinder Electric,1.4,BrewMaster,Kuala Lumpur,Norhaida Binti Ali,Shah Alam,Failed Delivery - Attempted,2026-04-27,2026-04-27 11:30,Hafiz Rahman
+NV-100139,2026-04-26,Yoga Mat Non-Slip 6mm,1.0,FitLife Store,Singapore,Elaine Chua,Singapore,In Transit,2026-04-30,2026-04-27 03:20,Mohamad Faizal
+NV-100140,2026-04-26,Desk Lamp LED with USB,0.6,LightUp SG,Singapore,Victor Tan,Singapore,Pending Pickup,2026-04-29,2026-04-26 14:00,—
+NV-100141,2026-04-27,Noise Cancelling Headphones,0.4,AudioPro MY,Kuala Lumpur,Zainuddin Hassan,Kuala Lumpur,In Transit,2026-04-30,2026-04-27 07:00,Rajan Kumar
+NV-100142,2026-04-27,Smart Watch Fitness Tracker,0.1,GadgetZone SG,Singapore,Cheryl Lim,Singapore,Pending Pickup,2026-04-30,2026-04-27 09:00,—

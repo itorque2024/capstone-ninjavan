@@ -1,0 +1,44 @@
+Topic: Parcel Tracking — Complete Guide
+
+NinjaVan Tracking Portal: ninjavan.co/en-sg/tracking
+Tracking number format: NV-XXXXXX (printed on airway bill and in shipping confirmation email/SMS)
+Tracking updates refresh approximately every 30 minutes.
+
+TRACKING STATUSES EXPLAINED:
+- Pending Pickup: Parcel not yet collected from sender.
+- Picked Up: Parcel collected and heading to NinjaVan sorting facility.
+- In Transit: Parcel moving between facilities or depots.
+- Out for Delivery: Rider has parcel and will deliver today. Expect an SMS ~30 minutes before arrival.
+- Delivered: Successfully delivered. Proof of delivery (photo or signature) captured.
+- Failed Delivery – Attempted: Attempt made but unsuccessful. Re-attempt on next business day.
+- Return to Sender (RTS): All 3 delivery attempts exhausted. Parcel being returned to shipper.
+
+DELIVERY WINDOWS (Singapore):
+- Morning: 9:00 AM – 1:00 PM
+- Afternoon: 1:00 PM – 6:00 PM
+- Evening: 6:00 PM – 10:00 PM
+Windows are preferred — not guaranteed. You will be notified via SMS if your window cannot be met.
+
+IF TRACKING IS NOT UPDATING:
+- Allow up to 30 minutes after a scan event for the status to refresh.
+- If status unchanged for more than 48 hours, contact NinjaVan support.
+- During peak periods (11.11, 12.12, Eid, CNY), gaps of up to 72 hours between scans are normal.
+
+HOW TO CONTACT SUPPORT FOR TRACKING ISSUES:
+- NinjaChat Telegram: https://t.me/NinjaVanBot (Mon–Sat 9 AM–8 PM)
+- Email: shippercare_sg@ninjavan.co
+- Always include your tracking number.
+
+NOTIFICATIONS:
+- Automated SMS and email sent at: Picked Up, Out for Delivery, Delivered, and Failed Delivery.
+- To update your contact details for notifications, contact the merchant/seller who booked the shipment. NinjaVan cannot update recipient contact details directly.
+
+PROOF OF DELIVERY (POD):
+- NinjaVan captures a photo or electronic signature at every delivery.
+- POD accessible via ninjavan.co/en-sg/tracking within 24 hours of delivery.
+- Merchants can bulk-download POD from dashboard.ninjavan.co.
+- POD records are retained for 90 days.
+
+TRACKING MULTIPLE PARCELS:
+- Enter multiple tracking numbers separated by commas at ninjavan.co/en-sg/tracking.
+- Merchants: use dashboard.ninjavan.co for bulk tracking and shipment management.

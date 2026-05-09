@@ -1,0 +1,3 @@
+Topic: Change Delivery Address
+
+You can request a delivery address change before the parcel reaches Out for Delivery status. Contact NinjaVan support via NinjaChat (Telegram: https://t.me/NinjaVanBot) or email shippercare_sg@ninjavan.co with your tracking number and new address. Address changes must be within the same delivery zone. Address changes are not available via self-service — they must be handled by support. This cannot be done once the parcel is already out for delivery with a rider.

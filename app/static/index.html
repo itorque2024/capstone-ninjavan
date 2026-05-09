@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NinjaVan AI Operations Intelligence Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at top left, #0f172a 0%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        .nav-link {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, transparent 100%);
+            color: #10b981;
+            border-left: 4px solid #10b981;
+        }
+        .nav-link:hover:not(.active) {
+            background: rgba(255,255,255,0.05);
+        }
+        .cyber-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+        .cyber-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+        }
+        input, select {
+            background: rgba(2, 6, 23, 0.5) !important;
+            border: 1px solid rgba(148, 163, 184, 0.2) !important;
+            color: #f8fafc !important;
+        }
+        input:focus {
+            outline: none;
+            border-color: #10b981 !important;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2) !important;
+        }
+    </style>
+</head>
+<body class="flex">
+
+    <!-- Sidebar -->
+    <aside class="w-72 h-screen glass-panel m-4 flex flex-col justify-between sticky top-4">
+        <div>
+            <div class="p-6 border-b border-slate-800">
+                <h1 class="text-2xl font-bold flex items-center gap-2">
+                    <span class="text-3xl">🚀</span> Control Tower
+                </h1>
+            </div>
+            <nav class="p-4 flex flex-col gap-2">
+                <div class="nav-link active p-4 rounded-lg text-slate-400" onclick="switchView('tower', this)">
+                    <div class="font-semibold">🚦 Command Centre</div>
+                    <div class="text-xs text-slate-500 mt-0.5">All agents working together</div>
+                </div>
+                <div class="nav-link p-4 rounded-lg text-slate-400" onclick="switchView('demand', this)">
+                    <div class="font-semibold">📈 Volume Forecast</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Predict daily parcel demand</div>
+                </div>
+                <div class="nav-link p-4 rounded-lg text-slate-400" onclick="switchView('route', this)">
+                    <div class="font-semibold">🗺️ Route Planner</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Optimise rider dispatch</div>
+                </div>
+                <div class="nav-link p-4 rounded-lg text-slate-400" onclick="switchView('fraud', this)">
+                    <div class="font-semibold">🛡️ Fraud Scanner</div>
+                    <div class="text-xs text-slate-500 mt-0.5">Flag suspicious claims</div>
+                </div>
+                <div class="nav-link p-4 rounded-lg text-slate-400" onclick="switchView('chat', this)">
+                    <div class="font-semibold">💬 Customer Support</div>
+                    <div class="text-xs text-slate-500 mt-0.5">AI-powered helpdesk</div>
+                </div>
+            </nav>
+        </div>
+        <div class="p-6 border-t border-slate-800">
+            <div class="flex items-center gap-2 mb-2">
+                <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
+                <span class="font-semibold">System ONLINE</span>
+            </div>
+            <div class="text-sm text-slate-400">Global Volume: <span id="globalVolume" class="font-bold text-white">800</span> parcels</div>
+            <div class="text-xs text-slate-500" id="globalVolumeSource">↑ default baseline</div>
+            <div class="text-sm text-slate-400 mt-1">Active Agents: 5</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 overflow-y-auto h-screen">
+
+        <!-- View: Control Tower -->
+        <section id="view-tower" class="space-y-6">
+            <div class="glass-panel p-6">
+                <h2 class="text-xl font-bold mb-2">🚦 AI Operations Command Centre</h2>
+                <p class="text-slate-400 mb-6">Pick a sale scenario and watch all 5 AI agents respond automatically — forecasting demand, re-routing riders, scanning for fraud, and updating customer support in real time.</p>
+
+                <div class="grid grid-cols-4 gap-4 mb-6">
+                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-center">
+                        <div class="text-slate-400 text-xs uppercase">Agents Coordinated</div>
+                        <div class="text-2xl font-bold text-emerald-400" id="m-score">—</div>
+                    </div>
+                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-center">
+                        <div class="text-slate-400 text-xs uppercase">Response Time</div>
+                        <div class="text-2xl font-bold" id="m-lat">—</div>
+                    </div>
+                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-center">
+                        <div class="text-slate-400 text-xs uppercase">Demand Spike</div>
+                        <div class="text-2xl font-bold text-amber-400" id="m-conf">—</div>
+                    </div>
+                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-center">
+                        <div class="text-slate-400 text-xs uppercase">Riders Dispatched</div>
+                        <div class="text-2xl font-bold text-emerald-400" id="m-stab">—</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="col-span-1">
+                        <div class="mb-4">
+                            <label class="block text-sm text-slate-400 mb-1">🧪 Scenario Simulator</label>
+                            <select id="sim-scenario" class="w-full p-3 rounded bg-slate-900 border border-slate-700" onchange="updateSimBtnText(this)">
+                                <option value="normal" selected>Standard Operations (baseline)</option>
+                                <optgroup label="── Major Sales ──">
+                                    <option value="spike">11.11 Mega Sale (+150%)</option>
+                                    <option value="sale_1212">12.12 Year-End Sale (+120%)</option>
+                                    <option value="blackfriday">Black Friday (+100%)</option>
+                                    <option value="cny">Chinese New Year (+80%)</option>
+                                    <option value="payday">Payday Sale (+60%)</option>
+                                    <option value="flash">Flash Sale — 1 Day (+200%)</option>
+                                </optgroup>
+                                <optgroup label="── Other Events ──">
+                                    <option value="lockdown">Regional Lockdown (-85%)</option>
+                                </optgroup>
+                                <optgroup label="── Custom ──">
+                                    <option value="custom">Custom Demand Spike</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div id="custom-controls" class="hidden mb-4 p-3 bg-slate-900 rounded-lg border border-slate-700">
+                            <label class="block text-sm text-slate-400 mb-2">Demand Multiplier</label>
+                            <div class="flex items-center gap-3">
+                                <input type="range" id="custom-multiplier" min="1.1" max="20.0" step="0.1" value="2.0"
+                                    class="flex-1 accent-emerald-500"
+                                    oninput="document.getElementById('custom-mult-num').value = parseFloat(this.value).toFixed(1)">
+                                <input type="number" id="custom-mult-num" min="1.1" max="20.0" step="0.1" value="2.0"
+                                    class="w-20 p-2 rounded bg-slate-800 border border-slate-600 text-center text-emerald-400 font-bold"
+                                    oninput="document.getElementById('custom-multiplier').value = this.value">
+                                <span class="text-slate-400 text-sm">×</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-slate-500 mt-1"><span>1.1× (slight)</span><span>20.0× (extreme)</span></div>
+                        </div>
+                        <button onclick="runSimulation()" id="simBtn" class="cyber-btn w-full py-4 rounded-lg shadow-lg mb-4">🚀 Run Standard Operations</button>
+                    </div>
+                    <div class="col-span-2 flex flex-col gap-4">
+                        <div>
+                            <div class="text-sm font-semibold text-slate-400 mb-2">🤖 Agent Reasoning Chain — how each AI reached its decision</div>
+                            <div class="space-y-2 overflow-y-auto max-h-96" id="simLogs">
+                                <div class="text-slate-500 text-sm p-3">Awaiting simulation trigger...</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold text-slate-400 mb-2">✅ Final Recommendation</div>
+                            <div class="bg-slate-900 rounded-lg border border-emerald-800/40 p-4 text-sm" id="simSummary">
+                                <span class="text-slate-500">Run a scenario above to see the operations plan.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View: Demand -->
+        <section id="view-demand" class="hidden space-y-6">
+            <div class="glass-panel p-6">
+                <h2 class="text-xl font-bold mb-6">📈 Demand Forecasting (LSTM + Prophet)</h2>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="col-span-1 space-y-4">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Start Date</label>
+                            <input type="date" id="d-date" class="w-full p-2 rounded" value="2024-11-01">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Horizon (Days)</label>
+                            <input type="number" id="d-hor" class="w-full p-2 rounded" value="14">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Warehouse Hub</label>
+                            <select id="d-hub" class="w-full p-2 rounded">
+                                <option value="All">All Hubs</option>
+                                <option value="Tampines Hub">Tampines Hub</option>
+                                <option value="Jurong Hub">Jurong Hub</option>
+                                <option value="Changi Hub">Changi Hub</option>
+                                <option value="Woodlands Hub">Woodlands Hub</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Sale Event</label>
+                            <select id="d-sale-event" class="w-full p-2 rounded" onchange="onDemandSaleEventChange(this)">
+                                <option value="none">— No sale event —</option>
+                                <optgroup label="── Major Sales ──">
+                                    <option value="spike">11.11 Mega Sale (+150%)</option>
+                                    <option value="sale_1212">12.12 Year-End Sale (+120%)</option>
+                                    <option value="blackfriday">Black Friday (+100%)</option>
+                                    <option value="cny">Chinese New Year (+80%)</option>
+                                    <option value="payday">Payday Sale (+60%)</option>
+                                    <option value="flash">Flash Sale — 1 Day (+200%)</option>
+                                </optgroup>
+                            </select>
+                            <div id="d-sale-note" class="hidden mt-2 p-2 rounded text-xs text-amber-300 bg-amber-900/20 border border-amber-500/30 whitespace-pre-line" id="d-sale-note">
+                                <span id="d-sale-note-text"></span>
+                            </div>
+                        </div>
+                        <button onclick="runDemand()" id="d-btn" class="cyber-btn w-full py-3 rounded-lg mt-6">Run Forecast</button>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="flex gap-4 mb-4">
+                            <div class="flex-1 bg-slate-800/50 p-4 rounded-lg border-l-4 border-emerald-500">
+                                <div class="text-slate-400 text-sm">Peak Volume</div>
+                                <div class="text-3xl font-bold text-white" id="d-peak">--</div>
+                            </div>
+                            <div class="flex-1 bg-slate-800/50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <div class="text-slate-400 text-sm">Total Parcels</div>
+                                <div class="text-3xl font-bold text-white" id="d-total">--</div>
+                            </div>
+                            <div class="flex-1 bg-slate-800/50 p-4 rounded-lg border-l-4 border-amber-500">
+                                <div class="text-slate-400 text-sm">Peak Day Spike</div>
+                                <div class="text-3xl font-bold text-amber-400" id="d-spike">--</div>
+                                <div class="text-slate-500 text-xs mt-1">worst day vs avg · <span id="d-total-inc">--</span> total</div>
+                            </div>
+                        </div>
+                        <div id="d-plot" class="h-64 w-full bg-slate-900/50 rounded-lg border border-slate-800 mb-4"></div>
+                        <!-- Insight Panel -->
+                        <div id="d-insight" class="hidden rounded-lg border p-4 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold text-sm" id="d-insight-title">Model Decision</div>
+                                <span id="d-risk-badge" class="text-xs px-2 py-0.5 rounded-full font-bold"></span>
+                            </div>
+                            <div class="text-xs text-slate-400 leading-relaxed" id="d-why"></div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400 uppercase mb-2">📋 What Operations Should Do</div>
+                                <ul id="d-recs" class="space-y-1"></ul>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-700">
+                                <div class="bg-slate-900 rounded p-2 text-center">
+                                    <div class="text-slate-500 text-xs">Riders Needed</div>
+                                    <div class="text-emerald-400 font-bold text-xl" id="d-riders">--</div>
+                                </div>
+                                <div class="bg-slate-900 rounded p-2 text-center">
+                                    <div class="text-slate-500 text-xs">Warehouse Shifts</div>
+                                    <div class="text-emerald-400 font-bold text-xl" id="d-shifts">--</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View: Routing -->
+        <section id="view-route" class="hidden space-y-6">
+            <div class="glass-panel p-6">
+                <h2 class="text-xl font-bold mb-2">🗺️ Intelligent Fleet Routing (TSP Heuristic)</h2>
+                <div id="r-demand-banner" class="mb-4 p-3 rounded-lg bg-emerald-900/20 border border-emerald-500/30 text-sm flex items-center gap-2">
+                    <span class="text-emerald-400">📈</span>
+                    <span class="text-slate-300">Routing for <strong class="text-emerald-400" id="r-demand-val">800</strong> parcels/day</span>
+                    <span class="text-slate-500 text-xs" id="r-demand-src">— default baseline (run Volume Forecast or Command Centre to update)</span>
+                </div>
+                <div class="flex items-end gap-4 mb-6">
+                    <div class="flex-1">
+                        <label class="block text-sm text-slate-400 mb-1">Simulation Mode</label>
+                        <select id="r-mode" class="w-full p-2 rounded" onchange="toggleManual(this.value)">
+                            <option value="Live Auto-Routing">Live Auto-Routing</option>
+                            <option value="Manual Simulator">Manual Simulator</option>
+                        </select>
+                    </div>
+                    <div id="manual-controls" class="flex-1 flex gap-4 hidden">
+                        <div class="flex-1">
+                            <label class="block text-sm text-slate-400 mb-1">Simulated Rain (mm)</label>
+                            <input type="number" id="r-rain" class="w-full p-2 rounded" value="0" min="0" max="50">
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm text-slate-400 mb-1">Active Riders</label>
+                            <input type="number" id="r-riders-input" class="w-full p-2 rounded" value="10" min="1" max="50">
+                        </div>
+                    </div>
+                    <button onclick="runRouting()" id="r-btn" class="cyber-btn px-8 py-2 rounded-lg h-10">Generate Routes</button>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="col-span-2">
+                        <div id="r-plot" class="h-[650px] w-full bg-slate-900/50 rounded-lg border border-slate-800"></div>
+                    </div>
+                    <div class="col-span-1 space-y-4">
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-emerald-500">
+                            <div class="text-slate-400 text-sm">Total Distance</div>
+                            <div class="text-2xl font-bold text-white"><span id="r-dist">--</span> km</div>
+                        </div>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border-l-4 border-emerald-500">
+                            <div class="text-slate-400 text-sm">Riders Deployed</div>
+                            <div class="text-2xl font-bold text-white" id="r-riders">--</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View: Fraud Detection -->
+        <section id="view-fraud" class="hidden space-y-6">
+            <div class="glass-panel p-6">
+                <h2 class="text-xl font-bold mb-2">🕵️ Claim Fraud Detection (Isolation Forest)</h2>
+                <div id="f-demand-banner" class="mb-4 p-3 rounded-lg bg-emerald-900/20 border border-emerald-500/30 text-sm flex items-center gap-2">
+                    <span class="text-emerald-400">📈</span>
+                    <span class="text-slate-300">Fraud threshold auto-adjusted for <strong class="text-emerald-400" id="f-demand-val">800</strong> parcels/day</span>
+                    <span class="text-slate-500 text-xs" id="f-demand-src">— default baseline (high volume raises fraud threshold automatically)</span>
+                </div>
+                <div class="flex items-end gap-4 mb-6">
+                    <div class="flex-1">
+                        <label class="block text-sm text-slate-400 mb-1">Strictness Threshold (0.0 to 1.0)</label>
+                        <input type="number" id="f-thresh" class="w-full p-2 rounded" value="0.75" step="0.05" min="0" max="1" onchange="filterFraudChart(document.getElementById('f-claim-select').value)">
+                    </div>
+                    <button onclick="runFraud()" id="f-btn" class="cyber-btn px-8 py-2 rounded-lg h-10">Scan Claims</button>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 bg-emerald-900/20 border border-emerald-500/30 rounded-lg">
+                        <div class="text-emerald-400 text-sm uppercase">Auto-Approved by AI</div>
+                        <div class="text-3xl font-bold text-white" id="f-auto">--</div>
+                    </div>
+                    <div class="p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
+                        <div class="text-red-400 text-sm uppercase">Flagged for Review</div>
+                        <div class="text-3xl font-bold text-white" id="f-flag">--</div>
+                    </div>
+                    <div class="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
+                        <div class="text-blue-400 text-sm uppercase">Total Batch Claims</div>
+                        <div class="text-3xl font-bold text-white" id="f-total">--</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Suspicious Claims Queue</h3>
+                        <div class="bg-slate-900/50 rounded-lg border border-slate-800 p-4 h-80 overflow-y-auto mb-4">
+                            <table class="w-full text-left text-sm">
+                                <thead>
+                                    <tr class="text-slate-400 border-b border-slate-700">
+                                        <th class="pb-2">Claim ID</th>
+                                        <th class="pb-2">Value</th>
+                                        <th class="pb-2">Risk %</th>
+                                        <th class="pb-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="f-table">
+                                    <tr><td colspan="4" class="text-slate-500 py-4">Run scan to view queue</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mb-4 bg-slate-900/50 p-4 rounded-lg border border-slate-800">
+                            <h3 class="text-lg font-bold mb-2 text-emerald-400">⚖️ Triage Panel</h3>
+                            <div class="mb-4">
+                                <label class="block text-sm text-slate-400 mb-1">Select Claim ID</label>
+                                <select id="f-claim-select" class="w-full p-2 rounded" onchange="filterFraudChart(this.value)">
+                                    <option value="">-- No Claims --</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="triageClaim('Approved')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded">✅ Approve</button>
+                                <button onclick="triageClaim('Rejected')" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 rounded">❌ Reject</button>
+                                <button onclick="triageClaim('Info Requested')" class="bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded">⚠️ Request Info</button>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2" id="f-map-title">Fraud Signal Map</h3>
+                        <div id="f-plot" class="h-[250px] w-full bg-slate-900/50 rounded-lg border border-slate-800"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View: Chatbot -->
+        <section id="view-chat" class="hidden space-y-6">
+            <div class="glass-panel p-6 h-[800px] flex flex-col">
+                <h2 class="text-xl font-bold mb-2">💬 Customer Service RAG AI</h2>
+                <p class="text-slate-400 mb-6">Try asking: "Where is my parcel? Why is it delayed?"</p>
+
+                <div id="chat-history" class="flex-1 overflow-y-auto space-y-4 mb-4 p-4 bg-slate-900/50 rounded-lg border border-slate-800">
+                    <!-- Chat bubbles go here -->
+                </div>
+
+                <div class="flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 p-3 rounded-lg" onkeypress="if(event.key === 'Enter') sendChat()">
+                    <button onclick="sendChat()" class="cyber-btn px-6 rounded-lg">Send</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        let globalDemandVolume = 800;
+
+        function updateGlobalVolume(vol, source) {
+            globalDemandVolume = vol;
+            const fmt = vol.toLocaleString();
+            document.getElementById('globalVolume').innerText = fmt;
+            const srcEl = document.getElementById('globalVolumeSource');
+            if (srcEl && source) srcEl.innerText = `↑ from ${source}`;
+            // Propagate to Route Planner banner
+            const rv = document.getElementById('r-demand-val');
+            const rs = document.getElementById('r-demand-src');
+            if (rv) rv.innerText = fmt;
+            if (rs && source) rs.innerText = `— set by ${source}`;
+            // Propagate to Fraud Scanner banner
+            const fv = document.getElementById('f-demand-val');
+            const fs = document.getElementById('f-demand-src');
+            if (fv) fv.innerText = fmt;
+            if (fs && source) fs.innerText = `— set by ${source}` + (vol > 15000 ? ' · threshold +0.15' : vol > 8000 ? ' · threshold +0.05' : ' · no threshold change');
+        }
+
+        function switchView(viewId, el) {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            document.getElementById('view-' + viewId).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Auto-set start date when a date-specific sale event is chosen.
+        const SALE_EVENT_DATES = {
+            'spike':       '2024-11-01',  // 11.11 → horizon Nov 1-14, peak on Nov 11
+            'sale_1212':   '2024-12-06',  // 12.12 → horizon Dec 6-19, peak on Dec 12
+            'blackfriday': '2024-11-22',  // Black Friday 2024 = Nov 29, peak on day 7
+        };
+        // Events whose date varies — flagged as planned enhancements.
+        const SALE_EVENT_NOTES = {
+            'cny':    '🗓️ CNY date shifts each year (lunisolar calendar). Set your own start date to place the peak.\n📌 Future enhancement: auto-detect CNY date by year.',
+            'payday': '🗓️ Payday varies by company (25th, end-of-month, etc.). Set your own start date.\n📌 Future enhancement: configurable payday anchor per client.',
+            'flash':  '🗓️ Flash sales can run any day — set your preferred start date.\n📌 Future enhancement: allow user to pick exact flash sale date.',
+        };
+        function onDemandSaleEventChange(sel) {
+            const d = SALE_EVENT_DATES[sel.value];
+            if (d) document.getElementById('d-date').value = d;
+            const noteEl = document.getElementById('d-sale-note');
+            const noteText = document.getElementById('d-sale-note-text');
+            const note = SALE_EVENT_NOTES[sel.value];
+            if (note) {
+                noteText.innerText = note;
+                noteEl.classList.remove('hidden');
+            } else {
+                noteEl.classList.add('hidden');
+            }
+        }
+
+        function updateSimBtnText(selectEl) {
+            const btn = document.getElementById('simBtn');
+            const text = selectEl.options[selectEl.selectedIndex].text;
+            btn.innerText = selectEl.value === 'normal' ? "🚀 Run " + text : "🚀 Simulate " + text;
+            const customControls = document.getElementById('custom-controls');
+            if (selectEl.value === 'custom') {
+                customControls.classList.remove('hidden');
+            } else {
+                customControls.classList.add('hidden');
+            }
+        }
+
+        async function runSimulation() {
+            const btn = document.getElementById('simBtn');
+            const logs = document.getElementById('simLogs');
+            const scenario = document.getElementById('sim-scenario').value;
+            const originalText = btn.innerText;
+
+            btn.innerText = "Simulating...";
+            btn.disabled = true;
+            logs.innerHTML = '<div class="text-slate-500 text-sm p-3 animate-pulse">Running all 5 agents...</div>';
+            document.getElementById('simSummary').innerHTML = '<span class="text-slate-500">Waiting for agents to complete...</span>';
+
+            try {
+                const customMult = scenario === 'custom'
+                    ? parseFloat(document.getElementById('custom-mult-num').value)
+                    : null;
+                const res = await fetch('/api/simulate', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ scenario_id: scenario, custom_multiplier: customMult })
+                });
+                const data = await res.json();
+
+                // Update global state across modules!
+                if(data.global_demand_volume) {
+                    updateGlobalVolume(data.global_demand_volume, 'Command Centre');
+                }
+
+                // Render structured agent chain
+                const statusColors = {
+                    spike:   "border-amber-500/60 bg-amber-900/10",
+                    warning: "border-orange-500/60 bg-orange-900/10",
+                    normal:  "border-slate-700 bg-slate-900/60"
+                };
+                const statusBadge = {
+                    spike:   '<span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40">⚡ Spike Detected</span>',
+                    warning: '<span class="text-xs px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/40">⚠️ Conflict Risk</span>',
+                    normal:  '<span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">✓ Normal</span>'
+                };
+
+                logs.innerHTML = "";
+                let delay = 100;
+                data.agents.forEach((agent, i) => {
+                    const cardId = `agent-card-${i}`;
+                    const color = statusColors[agent.status] || statusColors.normal;
+                    const badge = statusBadge[agent.status] || statusBadge.normal;
+                    const conflictHtml = agent.conflict
+                        ? `<div class="mt-2 text-xs text-orange-400 bg-orange-900/20 border border-orange-500/30 rounded p-2">⚠️ Conflict: ${agent.conflict}</div>`
+                        : '';
+                    const arrowHtml = i < data.agents.length - 1
+                        ? `<div class="flex items-center gap-2 text-xs text-slate-500 pl-4 py-1">
+                               <span class="text-emerald-500">↓</span>
+                               <span class="italic">${agent.feeds}</span>
+                           </div>`
+                        : '';
+
+                    logs.innerHTML += `
+                        <div id="${cardId}" class="rounded-lg border p-3 opacity-0 transition-all duration-500 ${color}">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="font-semibold text-sm">${agent.emoji} ${agent.name}
+                                    <span class="text-xs text-slate-500 font-normal ml-1">— ${agent.role}</span>
+                                </div>
+                                ${badge}
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 text-xs">
+                                <div class="bg-slate-950/50 rounded p-2">
+                                    <div class="text-slate-500 uppercase mb-1">Received</div>
+                                    <div class="text-slate-300">${agent.received}</div>
+                                </div>
+                                <div class="bg-slate-950/50 rounded p-2">
+                                    <div class="text-slate-500 uppercase mb-1">Reasoning</div>
+                                    <div class="text-slate-300">${agent.reasoning}</div>
+                                </div>
+                                <div class="bg-slate-950/50 rounded p-2">
+                                    <div class="text-slate-500 uppercase mb-1">Output</div>
+                                    <div class="text-emerald-400 font-semibold">${agent.output}</div>
+                                </div>
+                            </div>
+                            ${conflictHtml}
+                        </div>
+                        ${arrowHtml}`;
+
+                    setTimeout(() => {
+                        const el = document.getElementById(cardId);
+                        if (el) { el.classList.remove('opacity-0'); el.classList.add('opacity-100'); }
+                        logs.scrollTop = logs.scrollHeight;
+                    }, delay);
+                    delay += 700;
+                });
+
+                // Summary box
+                const summary = document.getElementById('simSummary');
+                setTimeout(() => {
+                    const s = data.summary;
+                    const conflictsHtml = s.conflicts && s.conflicts.length > 0
+                        ? s.conflicts.map(c => `<div class="text-orange-400 text-xs mt-1">⚠️ ${c}</div>`).join('')
+                        : '<div class="text-emerald-400 text-xs mt-1">✓ No conflicts detected</div>';
+                    summary.innerHTML = `
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-semibold text-emerald-400">📋 Operations Plan Active</span>
+                            <span class="text-xs text-slate-400">Response time: ${s.latency}s</span>
+                        </div>
+                        <div class="text-slate-200 mb-2">${s.recommendation}</div>
+                        <div class="grid grid-cols-3 gap-2 text-xs">
+                            <div class="bg-slate-800 rounded p-2 text-center">
+                                <div class="text-slate-500">Demand Spike</div>
+                                <div class="text-amber-400 font-bold text-lg">${s.spike}×</div>
+                            </div>
+                            <div class="bg-slate-800 rounded p-2 text-center">
+                                <div class="text-slate-500">Riders Dispatched</div>
+                                <div class="text-emerald-400 font-bold text-lg">${s.riders}</div>
+                            </div>
+                            <div class="bg-slate-800 rounded p-2 text-center">
+                                <div class="text-slate-500">Conflicts</div>
+                                <div class="${s.conflicts && s.conflicts.length > 0 ? 'text-orange-400' : 'text-emerald-400'} font-bold text-lg">${s.conflicts ? s.conflicts.length : 0}</div>
+                            </div>
+                        </div>
+                        ${conflictsHtml}`;
+                }, delay);
+
+                // Animate top metrics after all cards appear
+                setTimeout(() => {
+                    const m = data.metrics;
+                    document.getElementById("m-score").innerText = (m.agents_coordinated ?? "—") + " / 5";
+                    animateValue("m-lat", 0, m.decision_latency, 1000, "s", true);
+                    document.getElementById("m-conf").innerText = (m.demand_spike ?? "—") + "×";
+                    document.getElementById("m-stab").innerText = m.riders_dispatched ?? "—";
+                }, delay + 200);
+
+            } catch(e) {
+                logs.innerHTML = `<div class="text-red-400 text-sm p-3">[ERROR] ${e.message}</div>`;
+            }
+
+            // Re-enable button after animation
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }, 5000);
+        }
+
+        function animateValue(id, start, end, duration, suffix="", isFloat=false) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let current = progress * (end - start) + start;
+                obj.innerHTML = (isFloat ? current.toFixed(2) : Math.floor(current)) + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        async function runDemand() {
+            const btn = document.getElementById('d-btn');
+            btn.innerText = "Processing...";
+
+            const saleEvent = document.getElementById('d-sale-event').value;
+            const payload = {
+                start_date: document.getElementById('d-date').value,
+                horizon: parseInt(document.getElementById('d-hor').value),
+                warehouse: document.getElementById('d-hub').value,
+                marketing: 0,
+                is_sale: saleEvent !== 'none',
+                spike_pct: 30,
+                sale_event: saleEvent
+            };
+
+            try {
+                const res = await fetch('/api/demand', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById('d-peak').innerText = data.peak_val.toLocaleString();
+                    document.getElementById('d-total').innerText = data.total.toLocaleString();
+                    document.getElementById('d-spike').innerText = (data.spike_pct > 0 ? '+' : '') + data.spike_pct + '%';
+                    const ti = data.total_increase_pct ?? 0;
+                    document.getElementById('d-total-inc').innerText = (ti > 0 ? '+' : '') + ti + '%';
+                    updateGlobalVolume(data.global_demand_volume, 'Volume Forecast');
+                    Plotly.newPlot('d-plot', data.plot_json.data, data.plot_json.layout);
+
+                    // Populate insight panel
+                    const ins = data.insights;
+                    const riskColors = {
+                        high:   { border: 'border-red-500/50 bg-red-900/10',    badge: 'bg-red-500/20 text-red-400 border border-red-500/40',    label: '🔴 High Risk' },
+                        medium: { border: 'border-amber-500/50 bg-amber-900/10', badge: 'bg-amber-500/20 text-amber-400 border border-amber-500/40', label: '🟠 Medium Risk' },
+                        low:    { border: 'border-emerald-500/50 bg-emerald-900/10', badge: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40', label: '🟢 Low Risk' }
+                    };
+                    const rc = riskColors[ins.risk_level] || riskColors.low;
+                    const panel = document.getElementById('d-insight');
+                    panel.className = `rounded-lg border p-4 space-y-3 ${rc.border}`;
+                    panel.classList.remove('hidden');
+                    document.getElementById('d-insight-title').innerText = ins.model_decision;
+                    document.getElementById('d-risk-badge').className = `text-xs px-2 py-0.5 rounded-full font-bold ${rc.badge}`;
+                    document.getElementById('d-risk-badge').innerText = rc.label;
+                    document.getElementById('d-why').innerText = ins.why;
+                    document.getElementById('d-riders').innerText = ins.riders_needed;
+                    document.getElementById('d-shifts').innerText = ins.warehouse_shifts;
+                    document.getElementById('d-recs').innerHTML = ins.recommendations
+                        .map(r => `<li class="text-xs text-slate-300 flex gap-2"><span class="text-emerald-500 mt-0.5">→</span><span>${r}</span></li>`)
+                        .join('');
+                }
+            } catch(e) { alert("Error: " + e.message); }
+            btn.innerText = "Run Forecast";
+        }
+
+        function toggleManual(val) {
+            const controls = document.getElementById('manual-controls');
+            if(val === 'Manual Simulator') {
+                controls.classList.remove('hidden');
+            } else {
+                controls.classList.add('hidden');
+            }
+        }
+
+        async function runRouting() {
+            const btn = document.getElementById('r-btn');
+            btn.innerText = "Calculating...";
+
+            const payload = {
+                sim_mode: document.getElementById('r-mode').value,
+                manual_rain: parseFloat(document.getElementById('r-rain').value),
+                manual_riders: parseInt(document.getElementById('r-riders-input').value),
+                dynamic_demand_volume: globalDemandVolume
+            };
+
+            try {
+                const res = await fetch('/api/route', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                document.getElementById('r-dist').innerText = data.metrics.total_distance;
+                document.getElementById('r-riders').innerText = data.metrics.riders;
+                Plotly.newPlot('r-plot', data.plot_json.data, data.plot_json.layout);
+            } catch(e) { alert("Error: " + e.message); }
+            btn.innerText = "Generate Routes";
+        }
+
+        let handledClaims = [];
+        let allClaimsData = [];
+
+        function filterFraudChart(claimId) {
+            if (!allClaimsData.length) return;
+            const threshold = parseFloat(document.getElementById('f-thresh').value) || 0.75;
+
+            let filtered;
+            if (claimId) {
+                filtered = allClaimsData.filter(c => c.id === claimId);
+                document.getElementById('f-map-title').innerText =
+                    `Fraud Signal Map — Claim ${claimId}`;
+            } else {
+                filtered = allClaimsData.filter(c => c.risk >= threshold);
+                document.getElementById('f-map-title').innerText =
+                    `Fraud Signal Map — ${filtered.length} flagged (threshold ≥ ${threshold})`;
+            }
+
+            if (!filtered.length) {
+                Plotly.react('f-plot', [], {paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)'});
+                return;
+            }
+
+            const isSingle = !!claimId;
+            const trace = {
+                x: filtered.map(c => c.age),
+                y: filtered.map(c => c.claims),
+                mode: isSingle ? 'markers+text' : 'markers',
+                type: 'scatter',
+                text: isSingle ? filtered.map(c => `Claim ${c.id}`) : [],
+                textposition: 'top center',
+                textfont: {color: '#f8fafc', size: 11},
+                marker: {
+                    size: isSingle ? 14 : 8,
+                    color: filtered.map(c => c.risk),
+                    colorscale: [[0,'#10b981'],[0.4,'#f59e0b'],[0.75,'#ef4444'],[1,'#dc2626']],
+                    cmin: 0, cmax: 1,
+                    showscale: true,
+                    colorbar: {title: 'Risk', tickfont: {color: '#94a3b8'}},
+                    opacity: 0.9,
+                    line: {width: isSingle ? 2 : 0, color: '#ffffff'},
+                },
+                hovertemplate: '<b>Account Age:</b> %{x} days<br><b>Prior Claims:</b> %{y}<br><b>Risk:</b> %{marker.color:.2f}<extra></extra>',
+            };
+
+            const layout = {
+                xaxis: {title: 'Account Age (days)', showgrid: true, gridcolor: '#1e293b', color: '#94a3b8'},
+                yaxis: {title: 'Prior Claims', showgrid: true, gridcolor: '#1e293b', color: '#94a3b8'},
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: {color: '#94a3b8'},
+                margin: {l: 40, r: 10, t: 10, b: 40},
+            };
+
+            Plotly.react('f-plot', [trace], layout);
+        }
+
+        async function runFraud() {
+            const btn = document.getElementById('f-btn');
+            btn.innerText = "Scanning...";
+
+            const payload = {
+                threshold: parseFloat(document.getElementById('f-thresh').value),
+                handled_claims: handledClaims,
+                global_demand_volume: globalDemandVolume
+            };
+
+            try {
+                const res = await fetch('/api/fraud', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (data.error) {
+                    alert("Fraud Scanner error: " + data.error);
+                    btn.innerText = "Scan Claims";
+                    return;
+                }
+
+                document.getElementById('f-auto').innerText = data.auto_approved;
+                document.getElementById('f-flag').innerText = data.flagged_count;
+                document.getElementById('f-total').innerText = data.total_claims;
+
+                let tbody = '';
+                let options = '<option value="">-- Select Claim ID --</option>';
+                (data.queue || []).forEach(q => {
+                    tbody += `<tr class="border-b border-slate-800">
+                        <td class="py-2 font-mono text-emerald-400">${q.id}</td>
+                        <td class="py-2">$${q.value}</td>
+                        <td class="py-2">${q.risk}</td>
+                        <td class="py-2">${q.action}</td>
+                    </tr>`;
+                    options += `<option value="${q.id}">${q.id} - $${q.value}</option>`;
+                });
+                if(!data.queue || data.queue.length === 0) {
+                    tbody = '<tr><td colspan="4" class="text-slate-500 py-4">No suspicious claims found.</td></tr>';
+                    options = '<option value="">-- No Claims --</option>';
+                }
+                document.getElementById('f-table').innerHTML = tbody;
+                document.getElementById('f-claim-select').innerHTML = options;
+
+                allClaimsData = data.claims_data || [];
+                filterFraudChart('');
+            } catch(e) { alert("Fraud scan error: " + e.message); }
+            btn.innerText = "Scan Claims";
+        }
+
+        function triageClaim(actionType) {
+            const select = document.getElementById('f-claim-select');
+            const claimId = select.value;
+            if (!claimId) {
+                alert("Please select a Claim ID first.");
+                return;
+            }
+            handledClaims.push(claimId);
+            runFraud();
+        }
+
+        async function sendChat() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if(!msg) return;
+
+            const hist = document.getElementById('chat-history');
+
+            // Add user message
+            hist.innerHTML += `<div class="flex justify-end"><div class="bg-blue-600 text-white p-3 rounded-lg max-w-[80%]">${msg}</div></div>`;
+            input.value = "";
+            hist.scrollTop = hist.scrollHeight;
+
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ message: msg, global_demand_volume: globalDemandVolume })
+                });
+                const data = await res.json();
+
+                const badges = (data.agents_involved && data.agents_involved.length > 0
+                    ? data.agents_involved
+                    : data.agent_name ? [`${data.agent_emoji} ${data.agent_name}`] : []);
+                const hasRag = data.sources > 0;
+                const isGroq = data.llm_source === 'groq';
+                const llmLabel = hasRag
+                    ? (isGroq
+                        ? '<span class="text-xs px-2 py-0.5 rounded-full font-bold" style="background:rgba(139,92,246,0.15); color:#a78bfa; border:1px solid #a78bfa;" title="ChromaDB retrieved docs, Groq synthesised the answer">📚 RAG + Groq</span>'
+                        : '<span class="text-xs px-2 py-0.5 rounded-full font-bold" style="background:rgba(59,130,246,0.15); color:#60a5fa; border:1px solid #3b82f6;" title="ChromaDB retrieved docs, Gemini synthesised the answer">📚 RAG + Gemini</span>')
+                    : (isGroq
+                        ? '<span class="text-xs px-2 py-0.5 rounded-full font-bold" style="background:rgba(139,92,246,0.15); color:#a78bfa; border:1px solid #a78bfa;">⚡ via Groq</span>'
+                        : '<span class="text-xs px-2 py-0.5 rounded-full font-bold" style="background:rgba(59,130,246,0.15); color:#60a5fa; border:1px solid #3b82f6;">✦ via Gemini</span>');
+                const agentBadge = badges.length > 0
+                    ? `<div class="flex flex-wrap items-center gap-1 mb-2">
+                        ${badges.map(b => `<span class="text-xs px-2 py-0.5 rounded-full font-bold"
+                              style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid #10b981;">${b}</span>`).join('')}
+                        ${llmLabel}
+                        ${data.escalated ? '<span class="text-xs text-red-400 font-bold">⚠ Escalated</span>' : ''}
+                       </div>`
+                    : '';
+
+                const debugHtml = data.debug_log
+                    ? `<details class="mt-2"><summary class="text-xs text-slate-500 cursor-pointer">🧠 Agent trace</summary>
+                        <pre class="text-xs text-slate-400 mt-1 whitespace-pre-wrap">${data.debug_log}</pre></details>`
+                    : '';
+
+                hist.innerHTML += `<div class="flex justify-start mb-3">
+                    <div class="bg-slate-800 border border-slate-700 text-white p-3 rounded-lg max-w-[80%]">
+                        ${agentBadge}
+                        <div class="text-sm leading-relaxed">${data.answer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</div>
+                        ${debugHtml}
+                    </div></div>`;
+                hist.scrollTop = hist.scrollHeight;
+            } catch(e) { alert("Error: " + e.message); }
+        }
+    </script>
+</body>
+</html>

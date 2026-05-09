@@ -1,0 +1,3 @@
+Topic: Parcel Tracking
+
+To track your NinjaVan parcel, go to ninjavan.co/en-sg/tracking and enter your tracking number. Your tracking number is printed on the airway bill attached to your parcel and in your shipping confirmation email or SMS. Tracking updates refresh approximately every 30 minutes. If your tracking status has not changed for more than 48 hours, contact NinjaVan support via NinjaChat (Telegram: https://t.me/NinjaVanBot) or email shippercare_sg@ninjavan.co. During peak periods (11.11, 12.12, CNY), gaps of up to 72 hours between scans are normal due to high parcel volumes.

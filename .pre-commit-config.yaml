@@ -1,0 +1,21 @@
+repos:
+  # Standard hooks: key detection, yaml/json validity, merge conflict markers
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: detect-private-key
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  # Block Google/Gemini API keys (AIza pattern) in tracked files
+  - repo: local
+    hooks:
+      - id: block-gemini-key
+        name: Block Gemini API key
+        language: pygrep
+        entry: "AIza[0-9A-Za-z_\\-]{35}"
+        types_or: [python, jupyter, text, yaml]
+        exclude: "^\\.env(\\.example)?$"

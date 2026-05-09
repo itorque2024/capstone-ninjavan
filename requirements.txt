@@ -1,0 +1,34 @@
+# Core
+python-dotenv
+
+# ML
+scikit-learn
+xgboost
+lightgbm
+imbalanced-learn
+pandas
+numpy
+
+# Forecasting
+prophet
+
+# GenAI / RAG
+google-genai
+chromadb
+langchain
+langgraph
+groq
+
+# Optimization
+scipy
+
+# UI / API
+fastapi
+uvicorn
+plotly
+
+# Utilities
+matplotlib
+seaborn
+joblib
+tqdm

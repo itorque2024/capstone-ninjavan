@@ -1,0 +1,9 @@
+Topic: Delivery Notifications
+
+NinjaVan sends automated SMS and email notifications at these milestones:
+- When the parcel is picked up from the seller
+- When the parcel is out for delivery (same day)
+- When delivery is successful
+- When a delivery attempt fails
+
+The rider will also send an SMS approximately 30 minutes before arriving. To update your contact number for notifications, contact the seller who placed the shipment — NinjaVan cannot update recipient contact details directly. If you are not receiving notifications, check your spam/junk folder and confirm your contact details with the seller.

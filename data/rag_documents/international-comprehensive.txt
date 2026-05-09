@@ -1,0 +1,66 @@
+Topic: International Shipping — Full Guide
+
+COUNTRIES AND DELIVERY TIMES FROM SINGAPORE (working days, excludes customs clearance):
+- West Malaysia: 3–6 working days
+- East Malaysia (Sabah / Sarawak): 4–9 working days
+- Australia: 6–12 working days
+- Hong Kong: 5–8 working days
+- New Zealand: 8–15 working days
+- Manila, Philippines: 3–6 working days
+- Rest of Philippines: 7–11 working days
+- United Kingdom: 5–8 working days
+- USA: 10–14 working days
+- Indonesia (Java/Bali): 5–8 working days
+- Indonesia (Outer Islands): 8–14 working days
+- Thailand: 5–8 working days
+- Vietnam: 5–9 working days
+- Total network: 44 countries
+
+AVAILABLE SERVICES:
+- Standard International Parcel Delivery
+- Ninja Packs: Prepaid poly mailers from S$3.40/piece (includes packaging + delivery)
+- Cold Chain: Chilled (2°C–8°C) and Frozen (-15°C or colder) with real-time temperature monitoring, covering SE Asia
+- Freight Forwarding: air, sea, truck, and rail
+- Fulfillment & Warehousing: across SG, MY, ID, VN, PH; integrates with Shopee, Lazada, Shopify, TikTok Shop
+
+CUSTOMS AND DUTIES:
+- All international shipments subject to customs inspection at the destination.
+- Import duties and taxes are the recipient's responsibility (default — DDU, Delivered Duty Unpaid).
+- DDP (Delivered Duty Paid) available for Malaysia, Indonesia, Philippines, Thailand, Vietnam — duties paid upfront by sender for a smoother recipient experience.
+- Accurate customs declaration is mandatory. Undervaluing or misdeclaring is illegal and voids insurance.
+
+CUSTOMS DOCUMENT REQUIREMENTS:
+- Commercial invoice (value, description, quantity)
+- Packing list
+- Certificate of Origin (for selected product categories)
+- Permits if required (food, health products, electronics)
+
+INTERNATIONAL SHIPPING RATES:
+- Volumetric weight applies: (L × W × H in cm) ÷ 5000 = volumetric weight in kg
+- Billing uses whichever is higher: actual weight or volumetric weight
+- Indicative starting rates from Singapore: Malaysia from S$5, Indonesia from S$8, Hong Kong from S$10, Philippines from S$8, Thailand/Vietnam from S$8, Australia/UK/USA from S$20
+- Rates depend on parcel weight, dimensions, and service level
+- For a firm quote: visit ninjavan.co or email shippercare_sg@ninjavan.co
+
+TRACKING INTERNATIONAL PARCELS:
+- Track at ninjavan.co/en-sg/tracking using your NV tracking number.
+- Once handed to the local delivery partner in the destination country, tracking continues on the partner network.
+- Tracking may slow during customs clearance (normal: 1–5 business days).
+
+CUSTOMS CLEARANCE DELAYS:
+- If held by customs, NinjaVan will notify you via email.
+- You may need to provide additional documents or pay import duties.
+- Customs delays are outside NinjaVan's control and do not restart the SLA clock.
+
+INTERNATIONAL CLAIMS:
+- Lost international parcels: contact shippercare_sg@ninjavan.co promptly.
+- Damaged international parcels: contact within 7 days of actual delivery.
+- International claims subject to destination country liability limits.
+- NinjaVan Shield insurance strongly recommended for high-value international shipments.
+
+PROHIBITED ITEMS FOR INTERNATIONAL (applies across all countries):
+- Counterfeit goods
+- Live animals
+- Weapons and dangerous goods
+- Cash and negotiable instruments
+- Anything on the destination country's prohibited list

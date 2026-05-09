@@ -1,0 +1,79 @@
+Topic: Merchant and Seller Services
+
+NINJAVAN MERCHANT DASHBOARD:
+URL: dashboard.ninjavan.co
+The merchant dashboard is the all-in-one platform for managing shipments, tracking, and analytics.
+Key features:
+- Order creation (manual or bulk CSV upload)
+- API integration for automated order creation
+- Real-time tracking for all shipments
+- COD remittance reports and reconciliation
+- Return and RMA management
+- Proof of delivery (POD) bulk download
+- Failed delivery management and re-attempt scheduling
+
+SERVICE TIERS:
+- Ninja Flexi: Pay-as-you-go, no account required, starts from S$3.49/parcel
+- Shopify self-sign-up: starts from S$3.90/parcel
+- Ninja Packs: Prepaid poly mailers from S$3.40/piece (packaging + delivery included)
+- Eco Ninja Packs: 100% biodegradable mailers, incineration-safe
+- Ninja Dash: For merchants >150 parcels/month — next-day delivery, custom pricing
+- Enterprise: Custom SLA and pricing for high-volume shippers; dedicated account manager
+
+GETTING STARTED:
+1. Register at dashboard.ninjavan.co (free account)
+2. Verify business documents (ACRA registration for Singapore businesses)
+3. Choose a service tier
+4. Integrate via API or use the dashboard for manual bookings
+5. Set up monthly invoicing or Ninja Flexi pay-per-shipment billing
+
+API INTEGRATION:
+- RESTful API for automated shipment creation, tracking, and webhook events
+- Supported platforms: Shopify, WooCommerce, Lazada, Shopee, TikTok Shop, eBay, Zalora
+- API documentation available via dashboard
+
+PICKUP SERVICE (MERCHANT):
+- Schedule pickup date when creating order on dashboard
+- Pickups occur between 9 AM and 10 PM on the selected date
+- Cannot schedule same-day pickup at time of order creation
+- Surcharge: S$5 for pickups with fewer than 5 parcels per trip
+- Ninja Packs shipments are NOT eligible for pickup — must drop off at a Ninja Point
+
+DROP-OFF:
+- 800+ Ninja Points island-wide (see ninjavan.co/en-sg/support/find-ninja-point)
+- Standard size limit: under 5 kg and 80 cm combined (L+W+H)
+- Selected locations accept larger parcels — use the map filter to find them
+
+BILLING:
+- Invoice sent monthly via email for the previous month's deliveries
+- Payment via bank/wire transfer or PayNow
+- Include invoice number in payment reference
+- Late payment: dashboard access suspended; restored within 1 working day of payment
+- Disputes: email shippercare_sg@ninjavan.co; successful disputes result in a credit note
+
+COD REMITTANCE FOR MERCHANTS:
+- COD collected consolidated at end of the month and remitted after calculations and verification
+- Handling fee: S$1 OR 3% of invoice value, whichever is higher — deducted before remittance
+- Remittance via bank transfer or PayNow to registered business account
+- Failed COD collections flagged in shipment reports on the dashboard
+
+NINJAVAN SHIELD (INSURANCE):
+- Optional per-parcel add-on at time of booking
+- Standard Shield: up to S$2,000 or declared value, whichever is lower
+- Premium Shield: up to S$10,000 — contact your account manager
+- Claims: email shippercare_sg@ninjavan.co
+
+RETURN TO SENDER (RTS):
+- After 3 failed delivery attempts, parcel returned to sender
+- Dashboard shows RTS status with reason code
+- RTS parcels held at depot — contact support to arrange redelivery or disposal
+
+FULFILLMENT AND WAREHOUSING:
+- Warehouses in SG, MY, ID, VN, PH
+- Services: storage, pick and pack, sorting, kitting
+- Pay-per-use model
+- Integrates with Shopee, Lazada, Shopify, TikTok Shop, eBay, Zalora
+
+MERCHANT SUPPORT:
+- Email: shippercare_sg@ninjavan.co
+- Chat: NinjaChat Telegram https://t.me/NinjaVanBot (Mon–Sat 9 AM–8 PM)

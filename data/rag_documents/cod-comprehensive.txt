@@ -1,0 +1,34 @@
+Topic: Cash on Delivery (COD) — Full Policy
+
+WHAT IS COD:
+Cash on Delivery means the recipient pays at the door when the parcel is delivered, rather than paying online in advance. NinjaVan collects payment on the merchant's behalf.
+
+HOW COD WORKS FOR RECIPIENTS:
+1. You place an order with the COD option selected.
+2. NinjaVan rider arrives with your parcel.
+3. You pay the stated amount.
+4. Rider hands over the parcel.
+
+ACCEPTED PAYMENT METHODS FOR COD:
+- Cash (SGD)
+- PayNow QR code (for participating merchants — rider displays QR on device)
+Note: Credit/debit cards are NOT accepted at the door. Prepare exact cash where possible.
+
+FAILED COD DELIVERY:
+- If you cannot pay the COD amount at delivery, the attempt is marked as failed.
+- The parcel will be re-attempted on the next business day.
+- After 3 failed COD attempts, the parcel is returned to the sender.
+- Contact the merchant to arrange alternative payment before the next attempt.
+
+PARTIAL PAYMENT:
+- NinjaVan does not accept partial COD payment. The full stated amount must be paid.
+- If the amount shown is incorrect, do not accept the parcel — contact the merchant immediately.
+
+FOR MERCHANTS — COD REMITTANCE:
+- COD collected is consolidated at end of the month and remitted to the merchant via bank transfer or PayNow after calculations and verification.
+- Handling fee: S$1 OR 3% of the COD invoice value, whichever is higher — deducted from COD before remittance.
+- COD collection statuses are viewable on the NinjaVan merchant dashboard (dashboard.ninjavan.co).
+- Failed COD collections are reported in the shipment report on the dashboard.
+
+COD RECEIPT:
+- Always request and keep the COD payment receipt as proof of payment.

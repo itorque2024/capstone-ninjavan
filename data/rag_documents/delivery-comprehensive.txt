@@ -1,0 +1,51 @@
+Topic: Delivery — Complete Policy and Process
+
+DELIVERY ATTEMPTS:
+NinjaVan makes up to 3 delivery attempts for every parcel.
+- Attempt 1: On the scheduled delivery date during the preferred window.
+- Attempt 2: Next business day if the first attempt fails.
+- Attempt 3: Following business day if the second attempt fails.
+After 3 failed attempts, the parcel is returned to sender (Return to Sender / RTS).
+Weekends and public holidays are not counted as business days for re-attempt purposes.
+
+FAILED DELIVERY — COMMON REASONS:
+- No one present at delivery address during the delivery window.
+- Address incomplete, incorrect, or inaccessible.
+- Recipient refused delivery.
+- Parcel too large to leave safely without recipient present.
+- Rider unable to reach recipient via SMS or call.
+
+WHAT TO DO AFTER A FAILED DELIVERY:
+1. Check your SMS/email for the failed delivery notification.
+2. Visit ninjavan.co/en-sg/tracking → Reschedule Delivery (must be done at least 2 hours before the next attempt window).
+3. Alternatively, redirect to a Ninja Point for self-collection (800+ locations island-wide).
+4. To change delivery address, contact NinjaVan support — a fee may apply.
+
+SAFE DROP / LEAVE AT DOOR:
+- Authorise NinjaVan to leave the parcel at your door when you are unavailable.
+- Rider captures a photo as proof of delivery.
+- Once left, liability passes to the recipient.
+- Not available for COD, fragile, or high-value parcels.
+
+DELIVERY ADDRESS CHANGE:
+- Must be requested before the parcel reaches Out for Delivery status.
+- Address must be within the same delivery zone.
+- Contact NinjaVan support via NinjaChat (Telegram: https://t.me/NinjaVanBot) or email shippercare_sg@ninjavan.co.
+
+NINJA POINTS / PARCEL COLLECTION:
+- 800+ Ninja Points (PUDO partners) across Singapore.
+- Find locations at ninjavan.co/en-sg/support/find-ninja-point.
+- Bring tracking number and government-issued ID.
+- Present OTP + QR code from your collection notification SMS.
+- Standard parcels held for a limited number of days before return to sender.
+
+SLA — DELIVERY TIMEFRAMES (Singapore):
+- Standard: 1–3 working days from pickup
+- Next-day: Available only for Ninja Dash shippers (>150 parcels/month)
+- International: Varies by country — see international shipping guide
+
+PEAK PERIOD DELAYS:
+During 11.11 Sale, 12.12 Sale, Eid al-Fitr, Chinese New Year, and Christmas, SLAs may extend by 1–3 business days. NinjaVan proactively notifies affected customers via SMS.
+
+CONTACTLESS DELIVERY:
+All NinjaVan deliveries support contactless handover. No signature required unless parcel is high-value or COD. A photo is taken as proof at every delivery.

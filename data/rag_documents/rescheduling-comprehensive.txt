@@ -1,0 +1,52 @@
+Topic: Rescheduling Delivery — Complete Guide
+
+HOW TO RESCHEDULE:
+Option 1 — Online (self-service):
+1. Go to ninjavan.co/en-sg/tracking
+2. Enter your tracking number
+3. Click Manage Delivery → Reschedule
+4. Choose a new date (up to 7 calendar days from today)
+5. Select a preferred window (Morning / Afternoon / Evening)
+6. Confirm — you will receive an SMS/email confirmation
+
+Option 2 — Contact Support:
+- NinjaChat Telegram: https://t.me/NinjaVanBot (Mon–Sat 9 AM–8 PM)
+- Email: shippercare_sg@ninjavan.co
+
+RESCHEDULING RULES:
+- Must be done at least 2 hours before the current scheduled delivery window.
+- Cannot reschedule a parcel already Out for Delivery — the rider is on the way.
+- Maximum 2 reschedules per parcel. After 2 reschedules, contact support.
+- Rescheduling is free of charge.
+
+CHANGING DELIVERY ADDRESS:
+- Address changes possible before parcel is Out for Delivery.
+- Must be within the same delivery zone.
+- Must be arranged via support — not available via self-service.
+- Contact: NinjaChat or shippercare_sg@ninjavan.co
+
+CHANGING DELIVERY WINDOW:
+- Preferred windows (Morning / Afternoon / Evening) can be chosen during rescheduling.
+- Windows are prioritised, not guaranteed.
+- You will be notified via SMS the morning of delivery if your preferred window cannot be met.
+
+WHAT HAPPENS IF YOU MISS THE RESCHEDULED DELIVERY:
+- NinjaVan will attempt re-delivery on the next business day.
+- After 3 total failed attempts, parcel is returned to sender.
+- Consider redirecting to a Ninja Point for self-collection instead.
+
+NINJA POINT SELF-COLLECTION:
+- Over 800 Ninja Points island-wide (ninjavan.co/en-sg/support/find-ninja-point).
+- Bring tracking number and government-issued ID.
+- Present OTP + QR code from collection notification SMS to staff.
+- Returns NOT accepted at 7-Eleven locations.
+
+PUBLIC HOLIDAYS:
+- No deliveries on Singapore public holidays.
+- Parcels due on a public holiday are automatically rescheduled to the next business day.
+- No action needed — you will be notified.
+
+PEAK PERIOD RESCHEDULING:
+- During 11.11, 12.12, and festive seasons, rescheduling slots fill up quickly.
+- Reschedule as early as possible during peak periods.
+- Additional 1–2 day delays may occur even after rescheduling during very high-volume periods.

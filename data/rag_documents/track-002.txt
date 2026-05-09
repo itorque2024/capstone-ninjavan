@@ -1,0 +1,10 @@
+Topic: Tracking Status Meanings
+
+NinjaVan tracking statuses explained:
+- Pending Pickup: Parcel booked but not yet collected from sender.
+- Picked Up: Parcel collected from sender and on its way to a NinjaVan sorting facility.
+- In Transit: Parcel is moving between sorting hubs or depots.
+- Out for Delivery: A rider has the parcel and will deliver it today. Rider will SMS approximately 30 minutes before arrival.
+- Delivered: Parcel successfully delivered. A photo or signature was captured as proof of delivery.
+- Failed Delivery – Attempted: Delivery was attempted but unsuccessful (no one home, address inaccessible, or recipient refused). A re-attempt will be made on the next business day.
+- Return to Sender (RTS): All delivery attempts exhausted — parcel is being returned to the shipper.

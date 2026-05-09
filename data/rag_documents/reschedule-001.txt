@@ -1,0 +1,3 @@
+Topic: Rescheduling Delivery
+
+To reschedule a delivery, go to ninjavan.co/en-sg/tracking, enter your tracking number, and select Reschedule Delivery. Choose a preferred date up to 7 days from the current scheduled date and a preferred window (Morning, Afternoon, or Evening). Rescheduling must be done at least 2 hours before the current scheduled delivery window. You cannot reschedule a parcel that is already Out for Delivery. Each parcel can be rescheduled up to 2 times — for further rescheduling, contact NinjaVan support via NinjaChat (Telegram: https://t.me/NinjaVanBot) or email shippercare_sg@ninjavan.co. Rescheduling is free of charge.
